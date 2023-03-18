@@ -5,7 +5,7 @@ import domain.model.Ranks
 import domain.model.Suits
 
 class Deck {
-    val cards: Set<Card> = generateDeck()
+    var cards: Set<Card> = generateDeck()
 
     private fun generateDeck(): Set<Card> {
         return Suits.values().flatMap { suit ->
@@ -14,4 +14,6 @@ class Deck {
             }
         }.toSet()
     }
+
+    fun shuffle() = run { cards = cards.shuffled().toSet() }
 }
